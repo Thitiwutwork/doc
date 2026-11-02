@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Sarabun', 'Prompt', sans-serif;
+    color: #1e293b;
+    background-color: #f8fafc;
+  }
+}
+
+/* TH Sarabun styling for official document preview */
+.doc-page {
+  font-family: 'Sarabun', 'TH Sarabun New', sans-serif;
+  box-sizing: border-box;
+  width: 210mm;
+  min-height: 297mm;
+  height: 297mm;
+  max-height: 297mm;
+  padding: 18mm 20mm 15mm 20mm;
+  margin: 0 auto;
+  background: #ffffff !important;
+  color: #000000 !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  page-break-after: always;
+  page-break-inside: avoid;
+}
+
+/* Force solid black on all text and borders inside doc-page */
+.doc-page,
+.doc-page h1,
+.doc-page h2,
+.doc-page h3,
+.doc-page h4,
+.doc-page p,
+.doc-page span,
+.doc-page div,
+.doc-page label,
+.doc-page td,
+.doc-page th {
+  color: #000000 !important;
+}
+
+/* Official Dotted Leader / Underline styling */
+.dotted-line {
+  border-bottom: 1px dotted #000000;
+  display: inline-block;
+  min-height: 1.3em;
+  line-height: 1.3em;
+}
+
+.table-doc {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-doc th, .table-doc td {
+  border: 1px solid #000000 !important;
+  padding: 4px 6px;
+  vertical-align: top;
+  color: #000000 !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print Specific Rules */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    color: #000000 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .doc-page {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 18mm 20mm 15mm 20mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    page-break-after: always !important;
+    page-break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
