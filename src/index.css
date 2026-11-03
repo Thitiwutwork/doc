@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Prompt', 'Sarabun', sans-serif;
+    color: #1e293b;
+    background-color: #f8fafc;
+  }
+}
+
+/* TH Sarabun styling for official document preview matching Burapha A4 template */
+.doc-page {
+  font-family: 'Sarabun', 'Prompt', 'TH Sarabun New', sans-serif;
+  box-sizing: border-box;
+  width: 210mm;
+  min-height: 297mm;
+  height: 297mm;
+  max-height: 297mm;
+  padding: 20mm 15mm 15mm 25mm;
+  margin: 0 auto;
+  background: #ffffff !important;
+  color: #000000 !important;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  page-break-after: always;
+  break-after: page;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Force solid black on all text and borders inside doc-page */
+.doc-page,
+.doc-page h1,
+.doc-page h2,
+.doc-page h3,
+.doc-page h4,
+.doc-page p,
+.doc-page span,
+.doc-page div,
+.doc-page label,
+.doc-page td,
+.doc-page th {
+  color: #000000 !important;
+}
+
+/* Official Dotted Leader / Underline styling */
+.dotted-line {
+  border-bottom: 1px dotted #000000;
+  display: inline-block;
+  min-height: 1.3em;
+  line-height: 1.3em;
+}
+
+.table-doc {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+.table-doc th, .table-doc td {
+  border: 1px solid #000000 !important;
+  padding: 3px 5px;
+  vertical-align: top;
+  color: #000000 !important;
+}
+
+/* Weekly Log Tables matching official สกบ. 04/1 template */
+.table-weekly-header {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  border: 1.5px solid #000000 !important;
+  background-color: #ffffff !important;
+}
+
+.table-weekly-header td.col-week {
+  width: 105px;
+  border-right: 1.5px solid #000000 !important;
+  padding: 4px 8px;
+  font-weight: bold;
+  vertical-align: middle;
+  color: #000000 !important;
+}
+
+.table-weekly-header td.col-dates {
+  padding: 4px 12px;
+  font-weight: bold;
+  vertical-align: middle;
+  color: #000000 !important;
+}
+
+.table-weekly-log {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  border: 1.5px solid #000000 !important;
+  background-color: #ffffff !important;
+}
+
+.table-weekly-log thead th {
+  border-bottom: 1.5px solid #000000 !important;
+  padding: 4px 8px;
+  font-weight: bold;
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+.table-weekly-log td.col-date,
+.table-weekly-log th.col-date {
+  width: 105px;
+  border-right: 1.5px solid #000000 !important;
+  padding: 6px 6px;
+  vertical-align: top;
+  color: #000000 !important;
+}
+
+.table-weekly-log td.col-content,
+.table-weekly-log th.col-content {
+  vertical-align: top;
+  padding: 6px 12px;
+  color: #000000 !important;
+}
+
+.table-weekly-log tbody tr.row-dashed td {
+  border-bottom: 1px dashed #000000 !important;
+}
+
+.table-weekly-log tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print Specific Rules */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html, body, #root, main {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    color: #000000 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .preview-scroll-area {
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .preview-canvas-wrapper {
+    transform: none !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+    display: block !important;
+    width: 210mm !important;
+  }
+
+  .doc-page {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 15mm 18mm 12mm 18mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Prevent trailing extra blank page */
+  .doc-page:last-child,
+  .doc-page:last-of-type {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+}
