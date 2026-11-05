@@ -1,12 +1,12 @@
 import { INITIAL_DATA } from '../types/schema';
 
-const STORAGE_KEY = 'buu_coop_logbook_data_v11';
+const STORAGE_KEY = 'buu_coop_logbook_data_v12';
 const NEW_ADDRESS = '499 หมู่ที่ 7 ถนนมะลิวัลย์ ตำบลบ้านทุ่ม อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40000';
 
 export function loadSavedData() {
   try {
     // Clear all previous versions
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 11; i++) {
       localStorage.removeItem(`buu_coop_logbook_data_v${i}`);
     }
 
