@@ -42,7 +42,10 @@ export function loadSavedData() {
           ...(parsed.workPlan || {}),
           tasks: parsed.workPlan?.tasks?.length ? parsed.workPlan.tasks : INITIAL_DATA.workPlan.tasks,
         },
-        weeklyLogs: parsed.weeklyLogs?.length ? parsed.weeklyLogs : INITIAL_DATA.weeklyLogs,
+        weeklyLogs: (parsed.weeklyLogs?.length ? parsed.weeklyLogs : INITIAL_DATA.weeklyLogs).map((w) => ({
+          ...w,
+          feedback: '',
+        })),
         summaryReport: {
           ...INITIAL_DATA.summaryReport,
           ...(parsed.summaryReport || {}),

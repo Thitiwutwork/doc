@@ -34,6 +34,19 @@ export default function App() {
         },
       }));
     }
+
+    // Auto-clear cached feedback in weeklyLogs
+    setData((prev) => {
+      const hasFeedback = prev.weeklyLogs?.some((w) => w.feedback && w.feedback.trim() !== '');
+      if (!hasFeedback) return prev;
+      return {
+        ...prev,
+        weeklyLogs: prev.weeklyLogs.map((w) => ({
+          ...w,
+          feedback: '',
+        })),
+      };
+    });
   }, []);
 
   // Auto-save on change
