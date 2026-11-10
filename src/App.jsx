@@ -35,16 +35,48 @@ export default function App() {
       }));
     }
 
-    // Auto-clear cached feedback in weeklyLogs
+    // Auto-migrate Week 19 Day 6, ensure Week 20, and clear feedback
     setData((prev) => {
-      const hasFeedback = prev.weeklyLogs?.some((w) => w.feedback && w.feedback.trim() !== '');
-      if (!hasFeedback) return prev;
+      let updated = false;
+      let logs = prev.weeklyLogs ? [...prev.weeklyLogs] : [...INITIAL_DATA.weeklyLogs];
+
+      // 1. Update Week 19 Day 6 if still containing old default text
+      if (logs[18]?.days) {
+        const d6 = logs[18].days.find((d) => d.dayIndex === 6);
+        if (d6 && d6.content?.includes('ตรวจสอบความครบถ้วนของเอกสาร')) {
+          logs[18] = {
+            ...logs[18],
+            days: logs[18].days.map((d) =>
+              d.dayIndex === 6
+                ? {
+                    ...d,
+                    content:
+                      '- พัฒนาและเชื่อมต่อระบบ Nginx Reverse Proxy และ Fastify API ร่วมกับ Frontend จนเสร็จสมบูรณ์และพร้อมใช้งาน',
+                  }
+                : d
+            ),
+          };
+          updated = true;
+        }
+      }
+
+      // 2. Ensure Week 20 exists
+      if (logs.length < 20 && INITIAL_DATA.weeklyLogs[19]) {
+        logs[19] = INITIAL_DATA.weeklyLogs[19];
+        updated = true;
+      }
+
+      // 3. Clear any feedback text
+      const hasFeedback = logs.some((w) => w.feedback && w.feedback.trim() !== '');
+      if (hasFeedback) {
+        logs = logs.map((w) => ({ ...w, feedback: '' }));
+        updated = true;
+      }
+
+      if (!updated) return prev;
       return {
         ...prev,
-        weeklyLogs: prev.weeklyLogs.map((w) => ({
-          ...w,
-          feedback: '',
-        })),
+        weeklyLogs: logs,
       };
     });
   }, []);

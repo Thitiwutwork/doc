@@ -45,9 +45,22 @@ export function loadSavedData() {
         weeklyLogs: INITIAL_DATA.weeklyLogs.map((initialWeek, idx) => {
           const userWeek = parsed.weeklyLogs?.[idx];
           if (!userWeek) return initialWeek;
+          const mergedDays = initialWeek.days.map((initDay) => {
+            const uDay = userWeek.days?.find((d) => d.dayIndex === initDay.dayIndex);
+            if (!uDay) return initDay;
+            if (
+              idx === 18 &&
+              initDay.dayIndex === 6 &&
+              uDay.content?.includes('ตรวจสอบความครบถ้วนของเอกสาร')
+            ) {
+              return initDay;
+            }
+            return uDay;
+          });
           return {
             ...initialWeek,
             ...userWeek,
+            days: mergedDays,
             feedback: '',
           };
         }),
