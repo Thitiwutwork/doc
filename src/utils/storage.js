@@ -1,12 +1,12 @@
 import { INITIAL_DATA } from '../types/schema';
 
-const STORAGE_KEY = 'buu_coop_logbook_data_v14';
+const STORAGE_KEY = 'buu_coop_logbook_data_v15';
 const NEW_ADDRESS = '499 หมู่ที่ 7 ถนนมะลิวัลย์ ตำบลบ้านทุ่ม อำเภอเมืองขอนแก่น จังหวัดขอนแก่น 40000';
 
 export function loadSavedData() {
   try {
     // Clear all previous versions
-    for (let i = 1; i <= 13; i++) {
+    for (let i = 1; i <= 14; i++) {
       localStorage.removeItem(`buu_coop_logbook_data_v${i}`);
     }
 
@@ -42,10 +42,15 @@ export function loadSavedData() {
           ...(parsed.workPlan || {}),
           tasks: parsed.workPlan?.tasks?.length ? parsed.workPlan.tasks : INITIAL_DATA.workPlan.tasks,
         },
-        weeklyLogs: (parsed.weeklyLogs?.length ? parsed.weeklyLogs : INITIAL_DATA.weeklyLogs).map((w) => ({
-          ...w,
-          feedback: '',
-        })),
+        weeklyLogs: INITIAL_DATA.weeklyLogs.map((initialWeek, idx) => {
+          const userWeek = parsed.weeklyLogs?.[idx];
+          if (!userWeek) return initialWeek;
+          return {
+            ...initialWeek,
+            ...userWeek,
+            feedback: '',
+          };
+        }),
         summaryReport: {
           ...INITIAL_DATA.summaryReport,
           ...(parsed.summaryReport || {}),

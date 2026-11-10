@@ -116,8 +116,8 @@ export default function WeeklyLogForm({ data, onChange, activeWeek = 1, onSelect
             </button>
             <button
               type="button"
-              disabled={activeWeek >= 19}
-              onClick={() => onSelectWeek(Math.min(19, activeWeek + 1))}
+              disabled={activeWeek >= weeklyLogs.length}
+              onClick={() => onSelectWeek(Math.min(weeklyLogs.length, activeWeek + 1))}
               className="flex items-center gap-1 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold disabled:opacity-30 transition"
             >
               <span>สัปดาห์ถัดไป</span>
@@ -126,9 +126,9 @@ export default function WeeklyLogForm({ data, onChange, activeWeek = 1, onSelect
           </div>
         </div>
 
-        {/* 19 Week Pills Grid */}
-        <div className="grid grid-cols-6 sm:grid-cols-10 md:grid-cols-19 gap-1.5">
-          {Array.from({ length: 19 }, (_, i) => {
+        {/* Week Pills Grid */}
+        <div className="grid grid-cols-5 sm:grid-cols-10 gap-1.5">
+          {Array.from({ length: weeklyLogs.length }, (_, i) => {
             const weekNum = i + 1;
             const isCurrent = weekNum === activeWeek;
             const weekLog = weeklyLogs[i];

@@ -436,7 +436,25 @@ export const INITIAL_DATA = {
         { dayIndex: 3, dayLabel: 'วันพุธ', date: '4 พ.ย. 2569', content: '- จัดทำเอกสารคู่มือการดูแลรักษาระบบและข้อกำหนด API (API Specification) สำหรับทีมงานและผู้ดูแลระบบ' },
         { dayIndex: 4, dayLabel: 'วันพฤหัสบดี', date: '5 พ.ย. 2569', content: '- จัดทำเอกสารสถาปัตยกรรมระบบ Nginx, Fastify และ Knex.js ฉบับสมบูรณ์ อธิบายโครงสร้างการทำงานของโค้ดและโมดูลสำคัญ การเชื่อมต่อฐานข้อมูล Multi-DB (PostgreSQL และ MS SQL Server) พร้อมส่งออกเป็นคู่มือ PDF' },
         { dayIndex: 5, dayLabel: 'วันศุกร์', date: '6 พ.ย. 2569', content: '- รับฟังการประเมินผลการปฏิบัติงานสหกิจศึกษาจากพี่เลี้ยง พร้อมรับคำแนะนำและข้อคิดเห็นเพื่อพัฒนาตนเอง' },
-        { dayIndex: 6, dayLabel: 'วันเสาร์', date: '7 พ.ย. 2569', content: '- ตรวจสอบความถูกต้องและความครบถ้วนของเอกสารบันทึกการปฏิบัติงาน สกบ. 01 - สกบ. 07 เพื่อเตรียมนำส่งมหาวิทยาลัย' },
+        { dayIndex: 6, dayLabel: 'วันเสาร์', date: '7 พ.ย. 2569', content: '- พัฒนาและเชื่อมต่อระบบ Nginx Reverse Proxy และ Fastify API ร่วมกับ Frontend จนเสร็จสมบูรณ์และพร้อมใช้งาน' },
+      ],
+      feedback: '',
+      studentSignature: 'นายฐิติวุฒิ พุกภิญโญ',
+      supervisorSignature: 'นายสามศักดิ์ บุญจวง',
+    },
+
+    // Week 20: 9 - 14 พ.ย. 2569
+    {
+      weekNumber: 20,
+      startDate: '9 พ.ย. 2569',
+      endDate: '14 พ.ย. 2569',
+      days: [
+        { dayIndex: 1, dayLabel: 'วันจันทร์', date: '9 พ.ย. 2569', content: '- จัดทำเอกสารคู่มือการใช้งาน Endpoint ของ Nginx และ Fastify API สำหรับเชื่อมต่อกับ Frontend' },
+        { dayIndex: 2, dayLabel: 'วันอังคาร', date: '10 พ.ย. 2569', content: '- ปรับปรุงและแก้ไขเอกสารสำหรับจัดทำเล่มรายงานโครงงาน (Project Report) ให้ครบถ้วนสมบูรณ์' },
+        { dayIndex: 3, dayLabel: 'วันพุธ', date: '11 พ.ย. 2569', content: '' },
+        { dayIndex: 4, dayLabel: 'วันพฤหัสบดี', date: '12 พ.ย. 2569', content: '' },
+        { dayIndex: 5, dayLabel: 'วันศุกร์', date: '13 พ.ย. 2569', content: '' },
+        { dayIndex: 6, dayLabel: 'วันเสาร์', date: '14 พ.ย. 2569', content: '' },
       ],
       feedback: '',
       studentSignature: 'นายฐิติวุฒิ พุกภิญโญ',

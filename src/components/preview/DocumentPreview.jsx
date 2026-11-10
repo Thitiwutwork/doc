@@ -32,10 +32,12 @@ export default function DocumentPreview({ data, activeWeek = 1, onChange }) {
     window.print();
   };
 
+  const totalPages = 8 + weeklyLogs.length * 2;
+
   const getPageInfoText = () => {
     switch (previewFilter) {
       case 'all':
-        return '📚 เอกสารทั้งเล่ม (46 หน้า A4)';
+        return `📚 เอกสารทั้งเล่ม (${totalPages} หน้า A4)`;
       case 'current-week':
         return `📝 สัปดาห์ที่ ${selectedWeek} (หน้า ${selectedWeek * 2 + 6} - ${selectedWeek * 2 + 7})`;
       case 'cover':
@@ -45,9 +47,9 @@ export default function DocumentPreview({ data, activeWeek = 1, onChange }) {
       case 'work-plan':
         return '📅 แผนปฏิบัติงาน สกบ.02 (หน้า 5 - 6)';
       case 'summary':
-        return '📊 สรุปผล สกบ.07 (หน้า 46)';
+        return `📊 สรุปผล สกบ.07 (หน้า ${totalPages})`;
       default:
-        return '46 หน้า';
+        return `${totalPages} หน้า`;
     }
   };
 

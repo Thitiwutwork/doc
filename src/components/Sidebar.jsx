@@ -53,9 +53,9 @@ export default function Sidebar({
     {
       id: 'weeklyLog',
       title: 'สกบ. 04/1 บันทึกรายสัปดาห์',
-      subtitle: `บันทึกกิจกรรมประจำวัน (สัปดาห์ที่ 1-19)`,
+      subtitle: `บันทึกกิจกรรมประจำวัน (สัปดาห์ที่ 1-${weeklyLogs.length})`,
       icon: CalendarDays,
-      badge: `${completedWeeksCount}/19 สัปดาห์`,
+      badge: `${completedWeeksCount}/${weeklyLogs.length} สัปดาห์`,
       badgeColor: completedWeeksCount > 0 ? 'bg-amber-100 text-amber-800' : 'bg-slate-100 text-slate-500',
     },
     {
