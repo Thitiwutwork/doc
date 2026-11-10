@@ -146,9 +146,12 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
 
         {/* Feedback Section with exactly 6 solid horizontal lines matching template image */}
         {renderFeedbackSection(feedback)}
+      </div>
 
+      {/* Bottom Section: Supervisor Signature & Footer anchored at bottom */}
+      <div className="mt-auto">
         {/* Supervisor Signature Block (Right-aligned, matching template image exactly) */}
-        <div className="flex justify-end mt-4 mb-2 pr-1">
+        <div className="flex justify-end mb-4 pr-1">
           <div className="w-[340px] text-center text-[14px] text-black">
             <div className="font-bold text-black mb-1.5 text-center text-[14px]">
               รับทราบ
@@ -163,11 +166,11 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Footer matching template image at bottom left */}
-      <div className="text-[12px] text-black italic font-serif mb-1 text-left">
-        แบบฟอร์ม สกบ. 04/1
+        {/* Footer matching template image at bottom left */}
+        <div className="text-[12px] text-black italic font-serif mb-1 text-left">
+          แบบฟอร์ม สกบ. 04/1
+        </div>
       </div>
     </div>
   );
