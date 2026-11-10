@@ -23,6 +23,7 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
       if (rem) wrappedLines.push(rem);
     });
 
+    // Exactly 5 content rows matching template image
     const totalRows = Math.max(5, wrappedLines.length);
     const rows = [];
     for (let i = 0; i < totalRows; i++) {
@@ -30,7 +31,7 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
     }
 
     return (
-      <div className="border-2 border-black bg-white mb-3 text-black overflow-hidden">
+      <div className="border-2 border-black bg-white mb-4 text-black overflow-hidden">
         {/* Header Row: วันที่ | รายละเอียดการปฏิบัติงาน with thick solid border */}
         <table className="w-full table-fixed border-collapse">
           <thead>
@@ -101,15 +102,15 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
     }
 
     return (
-      <div className="mb-3">
-        <div className="font-bold text-black text-[13px] mb-1.5">
+      <div className="mb-4">
+        <div className="font-bold text-black text-[14px] mb-2">
           ข้อเสนอแนะเพื่อพัฒนาการปฏิบัติงาน
         </div>
         <div className="w-full">
           {lines.map((text, idx) => (
             <div
               key={idx}
-              className="border-b border-black h-[24px] text-[12px] text-black px-1 flex items-end pb-0.5 leading-none font-normal"
+              className="border-b border-black h-[28px] text-[13px] text-black px-1 flex items-end pb-0.5 leading-none font-normal"
             >
               {text}
             </div>
@@ -122,55 +123,50 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
   return (
     <div className="doc-page flex flex-col justify-between text-left text-black font-sarabun text-[14px] leading-normal">
       <div>
-        {/* Top Form Code matching template Page 9 */}
-        <div className="text-[12px] text-black italic font-serif mb-2 text-left">
-          แบบฟอร์ม สกบ. 04/1
-        </div>
-
-        {/* Exactly 2 Day Boxes: Day 5 (ศุกร์) and Day 6 (เสาร์) */}
+        {/* Exactly 2 Day Boxes: Day 5 (ศุกร์) and Day 6 (เสาร์) with thick borders */}
         {renderDayBox(day5)}
         {renderDayBox(day6)}
 
-        {/* Student Signature Block (Right-aligned, matching PDF Page 9 exactly) */}
-        <div className="flex justify-end mt-2 mb-2 pr-2">
-          <div className="w-[320px] text-center text-[13px] text-black">
-            <div className="font-semibold text-black mb-1 text-center">
+        {/* Student Signature Block (Right-aligned, matching template image exactly) */}
+        <div className="flex justify-end mt-4 mb-4 pr-1">
+          <div className="w-[340px] text-center text-[14px] text-black">
+            <div className="font-bold text-black mb-1.5 text-center text-[14px]">
               ผู้ปฏิบัติงาน
             </div>
-            <div className="flex items-baseline justify-center mb-0.5 text-black">
+            <div className="flex items-baseline justify-center mb-1 text-black font-bold">
               <span>ลงชื่อ</span>
-              <span className="inline-block border-b border-black w-44 mx-2"></span>
+              <span className="inline-block border-b border-black w-48 mx-2"></span>
               <span>นิสิต</span>
             </div>
-            <div className="text-black">
-              (&nbsp;<span className="inline-block w-40 text-center font-normal">{studentName}</span>&nbsp;)
+            <div className="text-black text-[14px]">
+              (&nbsp;<span className="inline-block w-44 text-center font-normal">{studentName}</span>&nbsp;)
             </div>
           </div>
         </div>
 
-        {/* Feedback Section with exactly 6 solid horizontal lines matching PDF Page 9 */}
+        {/* Feedback Section with exactly 6 solid horizontal lines matching template image */}
         {renderFeedbackSection(feedback)}
 
-        {/* Supervisor Signature Block (Right-aligned, matching PDF Page 9 exactly) */}
-        <div className="flex justify-end mt-2 pr-2">
-          <div className="w-[320px] text-center text-[13px] text-black">
-            <div className="font-semibold text-black mb-1 text-center">
+        {/* Supervisor Signature Block (Right-aligned, matching template image exactly) */}
+        <div className="flex justify-end mt-4 mb-2 pr-1">
+          <div className="w-[340px] text-center text-[14px] text-black">
+            <div className="font-bold text-black mb-1.5 text-center text-[14px]">
               รับทราบ
             </div>
-            <div className="flex items-baseline justify-center mb-0.5 text-black">
+            <div className="flex items-baseline justify-center mb-1 text-black font-bold">
               <span>ลงชื่อ</span>
               <span className="inline-block border-b border-black w-36 mx-2"></span>
               <span className="whitespace-nowrap">ผู้บังคับบัญชา/ พี่เลี้ยง</span>
             </div>
-            <div className="text-black">
+            <div className="text-black text-[14px]">
               (&nbsp;<span className="inline-block w-40 text-center font-normal">{supervisorName}</span>&nbsp;)
             </div>
           </div>
         </div>
       </div>
 
-      {/* Footer matching template Pages 9, 11, 13... at bottom left */}
-      <div className="text-[12px] text-black italic font-serif mt-auto pt-1 text-left">
+      {/* Footer matching template image at bottom left */}
+      <div className="text-[12px] text-black italic font-serif mb-1 text-left">
         แบบฟอร์ม สกบ. 04/1
       </div>
     </div>
