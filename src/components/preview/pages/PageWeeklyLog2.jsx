@@ -102,8 +102,8 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
     }
 
     return (
-      <div className="mt-3 mb-2">
-        <div className="font-bold text-black text-[13.5px] mb-2">
+      <div className="mt-4 mb-2">
+        <div className="font-bold text-black text-[14px] mb-2">
           ข้อเสนอแนะเพื่อพัฒนาการปฏิบัติงาน
         </div>
         <div className="w-full">
@@ -121,53 +121,49 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
   };
 
   return (
-    <div className="doc-page flex flex-col justify-between text-left text-black font-sarabun text-[14px] leading-normal">
-      <div>
-        {/* Exactly 2 Day Boxes: Day 5 (ศุกร์) and Day 6 (เสาร์) with thick borders */}
-        {renderDayBox(day5)}
-        {renderDayBox(day6)}
+    <div
+      className="doc-page text-left text-black font-sarabun text-[14px] leading-normal"
+      style={{ paddingTop: '30mm' }}
+    >
+      {/* Exactly 2 Day Boxes: Day 5 (ศุกร์) and Day 6 (เสาร์) with thick borders */}
+      {renderDayBox(day5)}
+      {renderDayBox(day6)}
 
-        {/* Student Signature Block (Right-aligned, matching template image exactly) */}
-        <div className="flex justify-end mt-6 mb-5 pr-1">
-          <div className="w-[340px] text-center text-[13.5px] text-black">
-            <div className="font-bold text-black mb-1.5 text-center text-[13.5px]">
-              ผู้ปฏิบัติงาน
-            </div>
-            <div className="flex items-baseline justify-center mb-1 text-black font-bold">
-              <span>ลงชื่อ</span>
-              <span className="inline-block border-b border-black w-44 mx-2"></span>
-              <span>นิสิต</span>
-            </div>
-            <div className="text-black text-[13px]">
-              (&nbsp;<span className="inline-block w-40 text-center font-normal">{studentName}</span>&nbsp;)
-            </div>
+      {/* Student Signature Block (Right-aligned, matching template image exactly) */}
+      <div className="flex justify-end mt-7 mb-4 pr-1">
+        <div className="w-[340px] text-center text-[13.5px] text-black">
+          <div className="font-bold text-black mb-1.5 text-center text-[13.5px]">
+            ผู้ปฏิบัติงาน
           </div>
-        </div>
-
-        {/* Feedback Section with exactly 6 solid horizontal lines matching template image */}
-        {renderFeedbackSection(feedback)}
-
-        {/* Supervisor Signature Block (Right-aligned, with generous gap matching template image exactly) */}
-        <div className="flex justify-end mt-12 mb-4 pr-1">
-          <div className="w-[340px] text-center text-[13.5px] text-black">
-            <div className="font-bold text-black mb-1.5 text-center text-[13.5px]">
-              รับทราบ
-            </div>
-            <div className="flex items-baseline justify-center mb-1 text-black font-bold">
-              <span>ลงชื่อ</span>
-              <span className="inline-block border-b border-black w-36 mx-2"></span>
-              <span className="whitespace-nowrap">ผู้บังคับบัญชา/ พี่เลี้ยง</span>
-            </div>
-            <div className="text-black text-[13px]">
-              (&nbsp;<span className="inline-block w-40 text-center font-normal">{supervisorName}</span>&nbsp;)
-            </div>
+          <div className="flex items-baseline justify-center mb-1 text-black font-normal">
+            <span>ลงชื่อ</span>
+            <span className="inline-block border-b border-black w-44 mx-2"></span>
+            <span>นิสิต</span>
+          </div>
+          <div className="text-black text-[13px]">
+            (&nbsp;<span className="inline-block w-40 text-center font-normal">{studentName}</span>&nbsp;)
           </div>
         </div>
       </div>
 
-      {/* Footer matching template image at bottom left */}
-      <div className="text-[12px] text-black italic font-serif mb-1 text-left">
-        แบบฟอร์ม สกบ. 04/1
+      {/* Feedback Section with exactly 6 solid horizontal lines matching template image */}
+      {renderFeedbackSection(feedback)}
+
+      {/* Supervisor Signature Block (Right-aligned, with generous gap matching template image exactly) */}
+      <div className="flex justify-end mt-12 pr-1">
+        <div className="w-[340px] text-center text-[13.5px] text-black">
+          <div className="font-bold text-black mb-1.5 text-center text-[13.5px]">
+            รับทราบ
+          </div>
+          <div className="flex items-baseline justify-center mb-1 text-black font-normal">
+            <span>ลงชื่อ</span>
+            <span className="inline-block border-b border-black w-36 mx-2"></span>
+            <span className="whitespace-nowrap">ผู้บังคับบัญชา/ พี่เลี้ยง</span>
+          </div>
+          <div className="text-black text-[13px]">
+            (&nbsp;<span className="inline-block w-40 text-center font-normal">{supervisorName}</span>&nbsp;)
+          </div>
+        </div>
       </div>
     </div>
   );
