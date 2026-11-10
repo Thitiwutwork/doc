@@ -31,15 +31,15 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
     }
 
     return (
-      <div className="border-2 border-black bg-white mb-2.5 text-black overflow-hidden">
+      <div className="border-2 border-black bg-white mb-3 text-black overflow-hidden">
         {/* Header Row: วันที่ | รายละเอียดการปฏิบัติงาน with thick solid border */}
         <table className="w-full table-fixed border-collapse">
           <thead>
-            <tr className="border-b-2 border-black bg-white text-[13px] font-bold text-black">
-              <th className="w-[110px] border-r-2 border-black px-2 py-1 text-center font-bold">
+            <tr className="border-b-2 border-black bg-white text-[13px] font-bold text-black h-[26px]">
+              <th className="w-[110px] border-r-2 border-black px-2 py-0.5 text-center font-bold">
                 วันที่
               </th>
-              <th className="px-3 py-1 text-left font-bold">
+              <th className="px-3 py-0.5 text-left font-bold">
                 รายละเอียดการปฏิบัติงาน
               </th>
             </tr>
@@ -50,7 +50,7 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
               return (
                 <tr
                   key={idx}
-                  className={`h-[23px] ${isLast ? '' : 'border-b border-dotted border-black'}`}
+                  className={`h-[22px] ${isLast ? '' : 'border-b border-dotted border-black'}`}
                 >
                   {/* Left Column: Date & Day Label on row 0, dotted border below each row */}
                   <td className="w-[110px] border-r-2 border-black px-1.5 py-0 text-center align-middle">
@@ -102,8 +102,8 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
     }
 
     return (
-      <div className="mt-2 mb-2">
-        <div className="font-bold text-black text-[13.5px] mb-1.5">
+      <div className="mt-3 mb-2">
+        <div className="font-bold text-black text-[13.5px] mb-2">
           ข้อเสนอแนะเพื่อพัฒนาการปฏิบัติงาน
         </div>
         <div className="w-full">
@@ -127,13 +127,13 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
         {renderDayBox(day5)}
         {renderDayBox(day6)}
 
-        {/* Student Signature Block (Right-aligned, matching template Image 2 exactly) */}
-        <div className="flex justify-end mt-2 mb-2 pr-1">
+        {/* Student Signature Block (Right-aligned, matching template image exactly) */}
+        <div className="flex justify-end mt-6 mb-5 pr-1">
           <div className="w-[340px] text-center text-[13.5px] text-black">
-            <div className="font-bold text-black mb-1 text-center text-[13.5px]">
+            <div className="font-bold text-black mb-1.5 text-center text-[13.5px]">
               ผู้ปฏิบัติงาน
             </div>
-            <div className="flex items-baseline justify-center mb-0.5 text-black font-bold">
+            <div className="flex items-baseline justify-center mb-1 text-black font-bold">
               <span>ลงชื่อ</span>
               <span className="inline-block border-b border-black w-44 mx-2"></span>
               <span>นิสิต</span>
@@ -144,16 +144,16 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
           </div>
         </div>
 
-        {/* Feedback Section with exactly 6 solid horizontal lines matching template Image 2 */}
+        {/* Feedback Section with exactly 6 solid horizontal lines matching template image */}
         {renderFeedbackSection(feedback)}
 
-        {/* Supervisor Signature Block (Right-aligned, with gap matching template Image 2 exactly) */}
-        <div className="flex justify-end mt-7 mb-2 pr-1">
+        {/* Supervisor Signature Block (Right-aligned, with generous gap matching template image exactly) */}
+        <div className="flex justify-end mt-12 mb-4 pr-1">
           <div className="w-[340px] text-center text-[13.5px] text-black">
-            <div className="font-bold text-black mb-1 text-center text-[13.5px]">
+            <div className="font-bold text-black mb-1.5 text-center text-[13.5px]">
               รับทราบ
             </div>
-            <div className="flex items-baseline justify-center mb-0.5 text-black font-bold">
+            <div className="flex items-baseline justify-center mb-1 text-black font-bold">
               <span>ลงชื่อ</span>
               <span className="inline-block border-b border-black w-36 mx-2"></span>
               <span className="whitespace-nowrap">ผู้บังคับบัญชา/ พี่เลี้ยง</span>
@@ -165,7 +165,7 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
         </div>
       </div>
 
-      {/* Footer matching template Image 2 at bottom left */}
+      {/* Footer matching template image at bottom left */}
       <div className="text-[12px] text-black italic font-serif mb-1 text-left">
         แบบฟอร์ม สกบ. 04/1
       </div>
