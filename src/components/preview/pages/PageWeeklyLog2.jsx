@@ -31,7 +31,7 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
     }
 
     return (
-      <div className="border-2 border-black bg-white mb-4 text-black overflow-hidden">
+      <div className="border-2 border-black bg-white mb-2.5 text-black overflow-hidden">
         {/* Header Row: วันที่ | รายละเอียดการปฏิบัติงาน with thick solid border */}
         <table className="w-full table-fixed border-collapse">
           <thead>
@@ -50,7 +50,7 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
               return (
                 <tr
                   key={idx}
-                  className={`h-[25px] ${isLast ? '' : 'border-b border-dotted border-black'}`}
+                  className={`h-[23px] ${isLast ? '' : 'border-b border-dotted border-black'}`}
                 >
                   {/* Left Column: Date & Day Label on row 0, dotted border below each row */}
                   <td className="w-[110px] border-r-2 border-black px-1.5 py-0 text-center align-middle">
@@ -69,7 +69,7 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
                   </td>
 
                   {/* Right Column: Line of Work Description */}
-                  <td className="px-3 py-0 text-[12px] text-black leading-[24px] align-middle overflow-hidden whitespace-nowrap text-ellipsis font-normal">
+                  <td className="px-3 py-0 text-[12px] text-black leading-[22px] align-middle overflow-hidden whitespace-nowrap text-ellipsis font-normal">
                     {lineText}
                   </td>
                 </tr>
@@ -102,15 +102,15 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
     }
 
     return (
-      <div className="mb-4">
-        <div className="font-bold text-black text-[14px] mb-2">
+      <div className="mt-2 mb-2">
+        <div className="font-bold text-black text-[13.5px] mb-1.5">
           ข้อเสนอแนะเพื่อพัฒนาการปฏิบัติงาน
         </div>
         <div className="w-full">
           {lines.map((text, idx) => (
             <div
               key={idx}
-              className="border-b border-black h-[28px] text-[13px] text-black px-1 flex items-end pb-0.5 leading-none font-normal"
+              className="border-b border-black h-[22px] text-[12px] text-black px-1 flex items-end pb-0.5 leading-none font-normal"
             >
               {text}
             </div>
@@ -127,50 +127,47 @@ export default function PageWeeklyLog2({ weekData, generalData, jobDescData }) {
         {renderDayBox(day5)}
         {renderDayBox(day6)}
 
-        {/* Student Signature Block (Right-aligned, matching template image exactly) */}
-        <div className="flex justify-end mt-4 mb-4 pr-1">
-          <div className="w-[340px] text-center text-[14px] text-black">
-            <div className="font-bold text-black mb-1.5 text-center text-[14px]">
+        {/* Student Signature Block (Right-aligned, matching template Image 2 exactly) */}
+        <div className="flex justify-end mt-2 mb-2 pr-1">
+          <div className="w-[340px] text-center text-[13.5px] text-black">
+            <div className="font-bold text-black mb-1 text-center text-[13.5px]">
               ผู้ปฏิบัติงาน
             </div>
-            <div className="flex items-baseline justify-center mb-1 text-black font-bold">
+            <div className="flex items-baseline justify-center mb-0.5 text-black font-bold">
               <span>ลงชื่อ</span>
-              <span className="inline-block border-b border-black w-48 mx-2"></span>
+              <span className="inline-block border-b border-black w-44 mx-2"></span>
               <span>นิสิต</span>
             </div>
-            <div className="text-black text-[14px]">
-              (&nbsp;<span className="inline-block w-44 text-center font-normal">{studentName}</span>&nbsp;)
+            <div className="text-black text-[13px]">
+              (&nbsp;<span className="inline-block w-40 text-center font-normal">{studentName}</span>&nbsp;)
             </div>
           </div>
         </div>
 
-        {/* Feedback Section with exactly 6 solid horizontal lines matching template image */}
+        {/* Feedback Section with exactly 6 solid horizontal lines matching template Image 2 */}
         {renderFeedbackSection(feedback)}
-      </div>
 
-      {/* Bottom Section: Supervisor Signature & Footer anchored at bottom */}
-      <div className="mt-auto">
-        {/* Supervisor Signature Block (Right-aligned, matching template image exactly) */}
-        <div className="flex justify-end mb-4 pr-1">
-          <div className="w-[340px] text-center text-[14px] text-black">
-            <div className="font-bold text-black mb-1.5 text-center text-[14px]">
+        {/* Supervisor Signature Block (Right-aligned, with gap matching template Image 2 exactly) */}
+        <div className="flex justify-end mt-7 mb-2 pr-1">
+          <div className="w-[340px] text-center text-[13.5px] text-black">
+            <div className="font-bold text-black mb-1 text-center text-[13.5px]">
               รับทราบ
             </div>
-            <div className="flex items-baseline justify-center mb-1 text-black font-bold">
+            <div className="flex items-baseline justify-center mb-0.5 text-black font-bold">
               <span>ลงชื่อ</span>
               <span className="inline-block border-b border-black w-36 mx-2"></span>
               <span className="whitespace-nowrap">ผู้บังคับบัญชา/ พี่เลี้ยง</span>
             </div>
-            <div className="text-black text-[14px]">
+            <div className="text-black text-[13px]">
               (&nbsp;<span className="inline-block w-40 text-center font-normal">{supervisorName}</span>&nbsp;)
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Footer matching template image at bottom left */}
-        <div className="text-[12px] text-black italic font-serif mb-1 text-left">
-          แบบฟอร์ม สกบ. 04/1
-        </div>
+      {/* Footer matching template Image 2 at bottom left */}
+      <div className="text-[12px] text-black italic font-serif mb-1 text-left">
+        แบบฟอร์ม สกบ. 04/1
       </div>
     </div>
   );
