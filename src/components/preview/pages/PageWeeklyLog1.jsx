@@ -1,5 +1,43 @@
 import React from 'react';
 
+// Word-level Thai text wrapping using Intl.Segmenter so words are never cut mid-word
+function wrapThaiText(text, maxChars = 68) {
+  if (!text) return [];
+  const trimmed = text.trim();
+  if (!trimmed) return [];
+
+  const rawLines = trimmed.split('\n').filter(Boolean);
+  const resultLines = [];
+
+  rawLines.forEach((line) => {
+    if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+      const segmenter = new Intl.Segmenter('th', { granularity: 'word' });
+      const segments = [...segmenter.segment(line)].map((s) => s.segment);
+      let cur = '';
+      for (const seg of segments) {
+        if ((cur + seg).length > maxChars) {
+          if (cur) resultLines.push(cur.trimEnd());
+          cur = seg.trimStart();
+        } else {
+          cur += seg;
+        }
+      }
+      if (cur) resultLines.push(cur.trimEnd());
+    } else {
+      let rem = line;
+      while (rem.length > maxChars) {
+        let sp = rem.lastIndexOf(' ', maxChars);
+        if (sp === -1 || sp < maxChars * 0.6) sp = maxChars;
+        resultLines.push(rem.substring(0, sp).trimEnd());
+        rem = rem.substring(sp).trimStart();
+      }
+      if (rem) resultLines.push(rem);
+    }
+  });
+
+  return resultLines;
+}
+
 export default function PageWeeklyLog1({ weekData, generalData }) {
   const { weekNumber, startDate, endDate, days = [] } = weekData || {};
   const day1 = days[0] || {};
@@ -8,19 +46,7 @@ export default function PageWeeklyLog1({ weekData, generalData }) {
   const day4 = days[3] || {};
 
   const renderDayBox = (day) => {
-    const rawContent = (day?.content || '').trim();
-    const rawLines = rawContent ? rawContent.split('\n').filter(Boolean) : [];
-    const wrappedLines = [];
-    rawLines.forEach((line) => {
-      let rem = line;
-      while (rem.length > 80) {
-        let sp = rem.lastIndexOf(' ', 80);
-        if (sp === -1 || sp < 45) sp = 80;
-        wrappedLines.push(rem.substring(0, sp));
-        rem = rem.substring(sp).trim();
-      }
-      if (rem) wrappedLines.push(rem);
-    });
+    const wrappedLines = wrapThaiText(day?.content || '', 68);
 
     // Exactly 5 content rows matching template image (or more if text overflows)
     const totalRows = Math.max(5, wrappedLines.length);
