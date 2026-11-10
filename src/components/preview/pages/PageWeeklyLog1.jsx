@@ -22,55 +22,58 @@ export default function PageWeeklyLog1({ weekData, generalData }) {
       if (rem) wrappedLines.push(rem);
     });
 
-    const totalRows = Math.max(6, wrappedLines.length);
+    // Exactly 5 content rows matching template image (or more if text overflows)
+    const totalRows = Math.max(5, wrappedLines.length);
     const rows = [];
     for (let i = 0; i < totalRows; i++) {
       rows.push(wrappedLines[i] || '');
     }
 
     return (
-      <div className="border-[1.5px] border-black bg-white mb-2 text-xs overflow-hidden">
-        {/* Header Row: วันที่ | รายละเอียดการปฏิบัติงาน */}
-        <div className="flex border-b-[1.5px] border-black bg-white text-xs font-bold text-black">
-          <div className="w-[100px] border-r-[1.5px] border-black px-2.5 py-0.5 text-left">
-            วันที่
-          </div>
-          <div className="flex-1 px-3 py-0.5 text-left">
-            รายละเอียดการปฏิบัติงาน
-          </div>
-        </div>
-
-        {/* Body Table with Native Rows: lines NEVER cut through text */}
+      <div className="border-2 border-black bg-white mb-2.5 text-black overflow-hidden">
+        {/* Header Row: วันที่ | รายละเอียดการปฏิบัติงาน with thick solid border */}
         <table className="w-full table-fixed border-collapse">
+          <thead>
+            <tr className="border-b-2 border-black bg-white text-[13px] font-bold text-black">
+              <th className="w-[110px] border-r-2 border-black px-2 py-1 text-center font-bold">
+                วันที่
+              </th>
+              <th className="px-3 py-1 text-left font-bold">
+                รายละเอียดการปฏิบัติงาน
+              </th>
+            </tr>
+          </thead>
           <tbody>
-            {rows.map((lineText, idx) => (
-              <tr
-                key={idx}
-                className={idx < rows.length - 1 ? 'border-b border-dashed border-black/70' : ''}
-              >
-                {/* Left Column: Date & Day Label rendered in row 0 spanning all rows */}
-                {idx === 0 && (
-                  <td
-                    rowSpan={rows.length}
-                    className="w-[100px] border-r-[1.5px] border-black bg-white p-2 text-center align-top"
-                  >
-                    <div className="font-bold text-xs text-black leading-tight">
-                      {day?.date || ''}
-                    </div>
-                    {day?.dayLabel && (
-                      <div className="text-[10.5px] text-slate-800 font-normal mt-1">
-                        ({day.dayLabel})
+            {rows.map((lineText, idx) => {
+              const isLast = idx === rows.length - 1;
+              return (
+                <tr
+                  key={idx}
+                  className={`h-[25px] ${isLast ? '' : 'border-b border-dotted border-black'}`}
+                >
+                  {/* Left Column: Date & Day Label on row 0, dotted border below each row */}
+                  <td className="w-[110px] border-r-2 border-black px-1.5 py-0 text-center align-middle">
+                    {idx === 0 && (
+                      <div className="leading-tight">
+                        <span className="font-bold text-[12px] block">
+                          {day?.date || ''}
+                        </span>
+                        {day?.dayLabel && (
+                          <span className="text-[11px] font-normal text-black block mt-0.5">
+                            ({day.dayLabel})
+                          </span>
+                        )}
                       </div>
                     )}
                   </td>
-                )}
 
-                {/* Right Column: Line of Work Description */}
-                <td className="px-2.5 py-0 text-[11px] text-black leading-[22px] align-middle h-[23px] overflow-hidden">
-                  {lineText}
-                </td>
-              </tr>
-            ))}
+                  {/* Right Column: Line of Work Description */}
+                  <td className="px-3 py-0 text-[12px] text-black leading-[24px] align-middle overflow-hidden whitespace-nowrap text-ellipsis font-normal">
+                    {lineText}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -78,22 +81,28 @@ export default function PageWeeklyLog1({ weekData, generalData }) {
   };
 
   return (
-    <div className="doc-page flex flex-col justify-between text-left text-xs text-black">
+    <div className="doc-page flex flex-col justify-between text-left text-black font-sarabun text-[14px] leading-normal">
       <div>
-        {/* Week Info Table matching PDF Pages 8, 10, 12... */}
-        <div className="border-[1.5px] border-black bg-white flex text-xs mb-2">
-          <div className="w-[100px] border-r-[1.5px] border-black px-2.5 py-1 font-bold text-black whitespace-nowrap">
-            สัปดาห์ที่: <span className="font-bold text-sm ml-1">{weekNumber}</span>
-          </div>
-          <div className="flex-1 px-3 py-1 font-bold text-black flex items-center justify-between">
-            <div>
-              ตั้งแต่วันที่: <span className="font-normal ml-1.5">{startDate}</span>
-            </div>
-            <div className="pr-6">
-              ถึงวันที่: <span className="font-normal ml-1.5">{endDate}</span>
-            </div>
-          </div>
-        </div>
+        {/* Week Info Table matching template image with 2px thick borders */}
+        <table className="w-full table-fixed border-collapse border-2 border-black bg-white mb-3 text-[14px]">
+          <tbody>
+            <tr>
+              <td className="w-[110px] border-r-2 border-black px-2.5 py-1.5 font-bold text-black whitespace-nowrap">
+                สัปดาห์ที่: <span className="font-bold text-[15px] ml-1">{weekNumber}</span>
+              </td>
+              <td className="px-4 py-1.5 font-bold text-black">
+                <div className="flex items-center justify-between">
+                  <div>
+                    ตั้งแต่วันที่: <span className="font-normal ml-1.5">{startDate}</span>
+                  </div>
+                  <div className="pr-8">
+                    ถึงวันที่: <span className="font-normal ml-1.5">{endDate}</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
         {/* Exactly 4 Day Boxes: Day 1 (จันทร์), Day 2 (อังคาร), Day 3 (พุธ), Day 4 (พฤหัสบดี) */}
         {renderDayBox(day1)}
@@ -102,8 +111,8 @@ export default function PageWeeklyLog1({ weekData, generalData }) {
         {renderDayBox(day4)}
       </div>
 
-      {/* Footer matching template Pages 10, 12, 14, 16... at bottom left */}
-      <div className="text-xs text-slate-600 italic font-serif mt-auto pt-1">
+      {/* Footer matching template at bottom left */}
+      <div className="text-[12px] text-black italic font-serif mt-auto pt-1 text-left">
         แบบฟอร์ม สกบ. 04/1
       </div>
     </div>
