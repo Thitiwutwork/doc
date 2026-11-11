@@ -451,7 +451,7 @@ export const INITIAL_DATA = {
       days: [
         { dayIndex: 1, dayLabel: 'วันจันทร์', date: '9 พ.ย. 2569', content: '- จัดทำเอกสารคู่มือการใช้งาน Endpoint ของ Nginx และ Fastify API สำหรับเชื่อมต่อกับ Frontend' },
         { dayIndex: 2, dayLabel: 'วันอังคาร', date: '10 พ.ย. 2569', content: '- ปรับปรุงและแก้ไขเอกสารสำหรับจัดทำเล่มรายงานโครงงาน (Project Report) ให้ครบถ้วนสมบูรณ์' },
-        { dayIndex: 3, dayLabel: 'วันพุธ', date: '11 พ.ย. 2569', content: '' },
+        { dayIndex: 3, dayLabel: 'วันพุธ', date: '11 พ.ย. 2569', content: '- รวบรวมข้อมูลผลการดำเนินงาน สรุปฟังก์ชันระบบ และจัดเตรียมภาพตัวอย่างหน้าจอ เพื่อจัดทำสไลด์นำเสนอโครงงาน (Project Presentation)' },
         { dayIndex: 4, dayLabel: 'วันพฤหัสบดี', date: '12 พ.ย. 2569', content: '' },
         { dayIndex: 5, dayLabel: 'วันศุกร์', date: '13 พ.ย. 2569', content: '' },
         { dayIndex: 6, dayLabel: 'วันเสาร์', date: '14 พ.ย. 2569', content: '' },

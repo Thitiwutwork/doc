@@ -66,7 +66,27 @@ export default function App() {
         updated = true;
       }
 
-      // 3. Clear any feedback text
+      // 3. Update Week 20 Day 3 (11 พ.ย. 2569) if empty
+      if (logs[19]?.days) {
+        const d3 = logs[19].days.find((d) => d.dayIndex === 3);
+        if (d3 && (!d3.content || d3.content.trim() === '')) {
+          logs[19] = {
+            ...logs[19],
+            days: logs[19].days.map((d) =>
+              d.dayIndex === 3
+                ? {
+                    ...d,
+                    content:
+                      '- รวบรวมข้อมูลผลการดำเนินงาน สรุปฟังก์ชันระบบ และจัดเตรียมภาพตัวอย่างหน้าจอ เพื่อจัดทำสไลด์นำเสนอโครงงาน (Project Presentation)',
+                  }
+                : d
+            ),
+          };
+          updated = true;
+        }
+      }
+
+      // 4. Clear any feedback text
       const hasFeedback = logs.some((w) => w.feedback && w.feedback.trim() !== '');
       if (hasFeedback) {
         logs = logs.map((w) => ({ ...w, feedback: '' }));
