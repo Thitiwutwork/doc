@@ -460,6 +460,24 @@ export const INITIAL_DATA = {
       studentSignature: 'นายฐิติวุฒิ พุกภิญโญ',
       supervisorSignature: 'นายสามศักดิ์ บุญจวง',
     },
+
+    // Week 21: 16 - 21 พ.ย. 2569
+    {
+      weekNumber: 21,
+      startDate: '16 พ.ย. 2569',
+      endDate: '21 พ.ย. 2569',
+      days: [
+        { dayIndex: 1, dayLabel: 'วันจันทร์', date: '16 พ.ย. 2569', content: '- จัดทำเอกสารคู่มือการเขียน Configuration และอธิบายโครงสร้างการทำงานของ Nginx Reverse Proxy สำหรับการเชื่อมต่อระบบ' },
+        { dayIndex: 2, dayLabel: 'วันอังคาร', date: '17 พ.ย. 2569', content: '' },
+        { dayIndex: 3, dayLabel: 'วันพุธ', date: '18 พ.ย. 2569', content: '' },
+        { dayIndex: 4, dayLabel: 'วันพฤหัสบดี', date: '19 พ.ย. 2569', content: '' },
+        { dayIndex: 5, dayLabel: 'วันศุกร์', date: '20 พ.ย. 2569', content: '' },
+        { dayIndex: 6, dayLabel: 'วันเสาร์', date: '21 พ.ย. 2569', content: '' },
+      ],
+      feedback: '',
+      studentSignature: 'นายฐิติวุฒิ พุกภิญโญ',
+      supervisorSignature: 'นายสามศักดิ์ บุญจวง',
+    },
   ],
 
   // 7. รายงานผลการดำเนินงานโครงการสหกิจศึกษา (สกบ. 07)

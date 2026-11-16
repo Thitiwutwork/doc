@@ -86,7 +86,33 @@ export default function App() {
         }
       }
 
-      // 4. Clear any feedback text
+      // 4. Ensure Week 21 exists
+      if (logs.length < 21 && INITIAL_DATA.weeklyLogs[20]) {
+        logs[20] = INITIAL_DATA.weeklyLogs[20];
+        updated = true;
+      }
+
+      // 5. Update Week 21 Day 1 (16 พ.ย. 2569) if empty
+      if (logs[20]?.days) {
+        const d1 = logs[20].days.find((d) => d.dayIndex === 1);
+        if (d1 && (!d1.content || d1.content.trim() === '')) {
+          logs[20] = {
+            ...logs[20],
+            days: logs[20].days.map((d) =>
+              d.dayIndex === 1
+                ? {
+                    ...d,
+                    content:
+                      '- จัดทำเอกสารคู่มือการเขียน Configuration และอธิบายโครงสร้างการทำงานของ Nginx Reverse Proxy สำหรับการเชื่อมต่อระบบ',
+                  }
+                : d
+            ),
+          };
+          updated = true;
+        }
+      }
+
+      // 6. Clear any feedback text
       const hasFeedback = logs.some((w) => w.feedback && w.feedback.trim() !== '');
       if (hasFeedback) {
         logs = logs.map((w) => ({ ...w, feedback: '' }));
