@@ -60,53 +60,45 @@ export default function App() {
         }
       }
 
-      // 2. Ensure Week 20 exists
-      if (logs.length < 20 && INITIAL_DATA.weeklyLogs[19]) {
-        logs[19] = INITIAL_DATA.weeklyLogs[19];
-        updated = true;
+      // 2. Ensure Week 20, 21, 22 exist and are up to date
+      if (logs.length < 22) {
+        while (logs.length < 22 && INITIAL_DATA.weeklyLogs[logs.length]) {
+          logs.push(INITIAL_DATA.weeklyLogs[logs.length]);
+          updated = true;
+        }
       }
 
-      // 3. Update Week 20 Day 3 (11 พ.ย. 2569) if empty
+      // 3. Update Week 20 Day 4, 5, 6 if empty
       if (logs[19]?.days) {
-        const d3 = logs[19].days.find((d) => d.dayIndex === 3);
-        if (d3 && (!d3.content || d3.content.trim() === '')) {
+        const d4 = logs[19].days.find((d) => d.dayIndex === 4);
+        if (d4 && (!d4.content || d4.content.trim() === '')) {
           logs[19] = {
             ...logs[19],
-            days: logs[19].days.map((d) =>
-              d.dayIndex === 3
-                ? {
-                    ...d,
-                    content:
-                      '- รวบรวมข้อมูลผลการดำเนินงาน สรุปฟังก์ชันระบบ และจัดเตรียมภาพตัวอย่างหน้าจอ เพื่อจัดทำสไลด์นำเสนอโครงงาน (Project Presentation)',
-                  }
-                : d
-            ),
+            days: INITIAL_DATA.weeklyLogs[19].days,
           };
           updated = true;
         }
       }
 
-      // 4. Ensure Week 21 exists
-      if (logs.length < 21 && INITIAL_DATA.weeklyLogs[20]) {
-        logs[20] = INITIAL_DATA.weeklyLogs[20];
-        updated = true;
-      }
-
-      // 5. Update Week 21 Day 1 (16 พ.ย. 2569) if empty
+      // 4. Update Week 21 with project presentation & committee revisions
       if (logs[20]?.days) {
-        const d1 = logs[20].days.find((d) => d.dayIndex === 1);
-        if (d1 && (!d1.content || d1.content.trim() === '')) {
+        const d2 = logs[20].days.find((d) => d.dayIndex === 2);
+        if (!d2 || !d2.content || d2.content.trim() === '') {
           logs[20] = {
             ...logs[20],
-            days: logs[20].days.map((d) =>
-              d.dayIndex === 1
-                ? {
-                    ...d,
-                    content:
-                      '- จัดทำเอกสารคู่มือการเขียน Configuration และอธิบายโครงสร้างการทำงานของ Nginx Reverse Proxy สำหรับการเชื่อมต่อระบบ',
-                  }
-                : d
-            ),
+            days: INITIAL_DATA.weeklyLogs[20].days,
+          };
+          updated = true;
+        }
+      }
+
+      // 5. Update Week 22 Day 1 if empty
+      if (logs[21]?.days) {
+        const d1 = logs[21].days.find((d) => d.dayIndex === 1);
+        if (d1 && (!d1.content || d1.content.trim() === '')) {
+          logs[21] = {
+            ...logs[21],
+            days: INITIAL_DATA.weeklyLogs[21].days,
           };
           updated = true;
         }
